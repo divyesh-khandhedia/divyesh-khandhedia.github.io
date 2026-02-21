@@ -1,8 +1,7 @@
 # Divyesh Khandhedia
-
-📞 +91-766-668-1319  
+  
 📧 khandhediadivyesh76@gmail.com  
-🔗 LinkedIn: (Add your profile URL here)
+🔗 LinkedIn: https://www.linkedin.com/in/divyesh76/
 
 ---
 
