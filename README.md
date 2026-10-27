@@ -1,5 +1,5 @@
 # Divyesh Khandhedia
-  
+   
 📧 khandhediadivyesh76@gmail.com  
 🔗 LinkedIn: https://www.linkedin.com/in/divyesh76/
 
@@ -7,9 +7,9 @@
 
 ## PROFESSIONAL SUMMARY
 
-Power System Engineer with 6+ years of experience in Power System Consulting. Strong background in planning and feasibility studies, steady-state and dynamic simulations, grid compliance, renewable integration, EMT studies, insulation coordination, TOV/TRV analysis, and harmonic studies.
+Power System Engineer with 6+ years of experience in Power System Consulting. Strong background in planning and feasibility studies, steady-state and dynamic simulations, grid compliance, renewable integration, and protection coordination across utility-scale and industrial power systems.
 
-Hands-on experience in utility-scale renewable plants (solar, wind, BESS, offshore wind), synchronous generation, industrial systems, and transmission planning across USA, UK, Europe, and Australia grid codes.
+Hands-on experience in utility-scale renewable plants (solar, wind, BESS, offshore wind), synchronous generation, industrial systems, and transmission planning across USA, UK, Europe, and Australia.
 
 Experienced in delivering technical reports and directly interacting with clients, OEMs, inverter manufacturers, and utilities.
 
@@ -152,6 +152,34 @@ Percentage: 89.60%
 - Electric Utilities Fundamentals and Future – University of Colorado (Coursera)
 - Electric Power Systems – University at Buffalo (Coursera)
 - Solar Energy and Electrical System Design – University at Buffalo (Coursera)
+
+---
+
+## PROJECT PORTFOLIO
+
+### 1. Utility-Scale Solar + BESS Grid Integration Study
+- Performed power flow, transient stability, and grid code compliance studies for renewable generation projects.
+- Assessed LVRT/HVRT, reactive power capability, frequency response, and controller interaction with the grid.
+- Supported inverter OEM discussions and validated dynamic models for interconnection approval.
+- Tools: PSSE, PSCAD, PowerFactory, Python-based data processing.
+
+### 2. Offshore Wind and HVDC Transmission Planning
+- Developed network models and evaluated evacuation strategies for offshore wind generation and interconnection planning.
+- Studied steady-state performance, contingency scenarios, and transmission constraints for complex multi-terminal systems.
+- Contributed to planning recommendations for grid strengthening, reactive compensation, and system reliability.
+- Tools: PSSE, PowerFactory, Excel-based analysis, engineering reports.
+
+### 3. Industrial Power System Stability and Motor Starting Assessment
+- Carried out motor starting, short circuit, transient stability, and islanding studies for industrial facilities.
+- Evaluated system performance during large motor inrush and contingency events to improve reliability and protection coordination.
+- Recommended mitigation measures such as capacitor banks, reactor sizing, and startup strategy optimization.
+- Tools: ETAP, PSSE, PSCAD, PSLF.
+
+### 4. Data Center and Synchronous Plant Dynamic Modeling
+- Modeled synchronous generators, excitation systems, and composite load behavior for critical facilities and generation assets.
+- Performed governor and excitation tuning, CCT analysis, and system restoration studies.
+- Supported grid compliance validation for data center and power plant operational scenarios.
+- Tools: PSSE, PSCAD, ETRAN, PRSIM.
 
 ---
 
