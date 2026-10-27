@@ -3,6 +3,8 @@
 📧 khandhediadivyesh76@gmail.com  
 🔗 LinkedIn: https://www.linkedin.com/in/divyesh76/
 
+[Download CV (PDF)](./CV.pdf)
+
 ---
 
 ## PROFESSIONAL SUMMARY
