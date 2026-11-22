@@ -52,6 +52,8 @@
           <button type="button" data-filter="simulation" aria-pressed="false">Network studies</button>
           <button type="button" data-filter="dynamics" aria-pressed="false">Dynamics &amp; control</button>
           <button type="button" data-filter="protection" aria-pressed="false">Faults &amp; protection</button>
+          <button type="button" data-filter="equipment" aria-pressed="false">Cables, lines &amp; transformers</button>
+          <button type="button" data-filter="fundamentals" aria-pressed="false">Electrical calculations</button>
           <button type="button" data-filter="automation" aria-pressed="false">Automation &amp; plots</button>
           <button type="button" data-filter="planning" aria-pressed="false">Planning &amp; renewables</button>
           <button type="button" data-filter="grid-data" aria-pressed="false">Grid &amp; market data</button>
@@ -81,7 +83,22 @@
           <li class="directory-card" data-keywords="network analysis CGMES OpenLoadFlow">
             <h4><a href="https://www.gridsuite.org/">GridSuite<span aria-hidden="true"> ↗</span></a></h4>
             <p>Explore the PowSyBl-based applications for grid modeling, operation and planning.</p>
-            <small>LF Energy · Platform</small>
+            <small>LF Energy · Platform · <a href="https://github.com/divyesh-khandhedia/gridstudy-app">GitHub fork</a></small>
+          </li>
+          <li class="directory-card" data-keywords="PV QV nose curve voltage collapse P-V Q-V">
+            <h4><a href="https://eepowerschool.com/tools/two-bus-load-flow/">PV and QV Curves<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Trace two-bus voltage-stability curves and inspect loadability and reactive margin.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="substation breaker switching ring-bus">
+            <h4><a href="https://gridcircuits.com/ring-bus-load-flow-calculator/">Transmission Ring-Bus Study<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare currents and topology as breakers change state in an idealized ring bus.</p>
+            <small>GridCircuits · Educational</small>
+          </li>
+          <li class="directory-card" data-keywords="wye neutral shift unbalanced voltages phase currents">
+            <h4><a href="https://gridcircuits.com/unbalanced-three-phase-calculator/">Unbalanced Wye Loads<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Calculate branch and neutral currents and neutral displacement for grounded or floating star loads.</p>
+            <small>GridCircuits · Educational</small>
           </li>
         </ul>
       </section>
@@ -103,6 +120,26 @@
             <p>Build and simulate circuit-level examples with animated currents and oscilloscope traces.</p>
             <small>Falstad · Educational</small>
           </li>
+          <li class="directory-card" data-keywords="frequency stability swing equation UFLS droop">
+            <h4><a href="https://eepowerschool.com/tools/inertia-rocof-calculator/">Inertia, RoCoF and Frequency Nadir<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate the frequency trajectory after an infeed loss using system inertia and aggregate governor response.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="GFL inverter converter phase locked loop weak grid bode">
+            <h4><a href="https://eepowerschool.com/tools/pll-tuner/">SRF-PLL Tuning<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate PI gains from loop bandwidth and damping, then inspect the modeled step and frequency response.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="SMIB generator out of step impedance trajectory">
+            <h4><a href="https://gridcircuits.com/power-swing-calculator/">Power Swing and Rotor Angle<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore the power-angle relation and apparent impedance during a swing.</p>
+            <small>GridCircuits · Classical machine model</small>
+          </li>
+          <li class="directory-card" data-keywords="motor starting DOL locked rotor torque">
+            <h4><a href="https://gridcircuits.com/induction-motor-starting-calculator/">Induction Motor Starting Current<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate starting current and torque from a stator-referred machine equivalent.</p>
+            <small>GridCircuits · Equivalent-circuit estimate</small>
+          </li>
         </ul>
       </section>
       <section class="directory-group" data-category="protection" aria-labelledby="category-protection">
@@ -118,15 +155,105 @@
             <p>Find low-voltage sizing and electrical-network calculation tools.</p>
             <small>Schneider Electric</small>
           </li>
-          <li class="directory-card" data-keywords="unbalanced faults Fortescue sequence phase angle">
-            <h4><a href="https://phasorprep.com/tools/symmetrical-components-calculator">Symmetrical Components Calculator<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Convert phase phasors to positive, negative and zero sequence components and plot the vectors.</p>
-            <small>PhasorPrep</small>
+          <li class="directory-card" data-keywords="Fortescue phase angle VUF positive negative zero">
+            <h4><a href="https://eepowerschool.com/tools/symmetrical-components/">Symmetrical Components Calculator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Resolve phase quantities into sequence components and examine voltage unbalance with interactive phasors.</p>
+            <small>EE Power School</small>
           </li>
           <li class="directory-card" data-keywords="relay oscillography CFG DAT waveform IEEE C37.111">
             <h4><a href="https://sagswell.com/comtrade-viewer">COMTRADE Viewer<span aria-hidden="true"> ↗</span></a></h4>
             <p>Inspect disturbance waveforms from COMTRADE records in the browser.</p>
             <small>SagSwell</small>
+          </li>
+          <li class="directory-card" data-keywords="unbalanced faults SLG LL LLG grounding positive negative zero sequence">
+            <h4><a href="https://eepowerschool.com/tools/fault-current-calculator/">Sequence-Network Fault Calculator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare three-phase, line-to-ground, line-to-line and double-line-to-ground faults using sequence impedances.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="asymmetrical fault peak current DC offset">
+            <h4><a href="https://stardeltapower.co.uk/tools/fault-waveform/">AC Fault Waveforms<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Plot the AC component and decaying DC offset of short-circuit current as X/R and initiation angle change.</p>
+            <small>Star Delta Power</small>
+          </li>
+          <li class="directory-card" data-keywords="relay coordination IEC 60255 TCC trip time">
+            <h4><a href="https://stardeltapower.co.uk/tools/idmt-curve-grading/">IDMT Curve Grading<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare upstream and downstream inverse-time curves and inspect grading margins.</p>
+            <small>Star Delta Power</small>
+          </li>
+          <li class="directory-card" data-keywords="secondary injection commissioning relay tolerance">
+            <h4><a href="https://stardeltapower.co.uk/tools/idmt-test-comparison/">IDMT Test Comparison<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare measured relay trip times with the selected inverse-time curve.</p>
+            <small>Star Delta Power</small>
+          </li>
+          <li class="directory-card" data-keywords="IEEE 1584 arc flash working distance protection">
+            <h4><a href="https://elek.com/calculators/arc-flash/">Arc-Flash Calculator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate incident energy and arc-flash boundary using the selected calculation method and input assumptions.</p>
+            <small>ELEK Software</small>
+          </li>
+          <li class="directory-card" data-keywords="earthing ground conductor tape fault duration I²t">
+            <h4><a href="https://gridcircuits.com/grounding-conductor-sizing-calculator/">Grounding Conductor Sizing<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Check grounding conductor cross-section for a short-duration fault using an adiabatic model.</p>
+            <small>GridCircuits · Thermal screening</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="equipment" aria-labelledby="category-equipment">
+        <h3 id="category-equipment">Cables, lines &amp; transformers</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="cable rating XLPE IEC grouping soil temperature">
+            <h4><a href="https://eepowerschool.com/tools/cable-sizing-calculator/">Cable Sizing<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Check cable ampacity derating, steady-state voltage drop and short-circuit thermal withstand.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="cable installation duct jamming pulling force">
+            <h4><a href="https://elek.com/calculators/cable-pulling/">Cable Pulling Tension<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate pulling tension and conduit bend sidewall pressure along a cable route.</p>
+            <small>ELEK Software</small>
+          </li>
+          <li class="directory-card" data-keywords="bonding cross bonding single point earthing sheath cable">
+            <h4><a href="https://stardeltapower.co.uk/tools/induced-sheath-voltage/">Induced Sheath Voltage<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate induced sheath voltage for single-core AC cable arrangements.</p>
+            <small>Star Delta Power</small>
+          </li>
+          <li class="directory-card" data-keywords="GMD GMR impedance RLGC nominal pi transposed bundle">
+            <h4><a href="https://eepowerschool.com/tools/transmission-line-parameters/">Transmission Line Parameters<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Derive line parameters from conductor geometry and inspect SIL, ABCD constants and the Ferranti effect.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="Dyn11 delta wye phase shift">
+            <h4><a href="https://eepowerschool.com/tools/transformer-connections/">Transformer Vector Groups<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Decode winding connections, clock angle and zero-sequence paths.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="no load copper iron core kW kVAr efficiency">
+            <h4><a href="https://stardeltapower.co.uk/tools/transformer-losses/">Transformer Losses<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate active and reactive losses from transformer data and operating load.</p>
+            <small>Star Delta Power</small>
+          </li>
+          <li class="directory-card" data-keywords="transformer impedance load losses short circuit">
+            <h4><a href="https://stardeltapower.co.uk/tools/transformer-xr/">Transformer X/R<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate the resistance and reactance split using transformer nameplate data.</p>
+            <small>Star Delta Power</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="fundamentals" aria-labelledby="category-fundamentals">
+        <h3 id="category-fundamentals">Electrical calculations</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="Z base kV MVA pu power system">
+            <h4><a href="https://eepowerschool.com/tools/per-unit-calculator/">Per-Unit and Base Conversion<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Convert ohms, percent and per unit, change MVA or voltage base, and carry voltage bases through transformer zones.</p>
+            <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="power factor generator sizing power current HP">
+            <h4><a href="https://generatorsource.com/tools-info/power-calculators/">Generator Electrical Conversions<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Convert between kW, kVA, amperes and horsepower for preliminary generator load estimates.</p>
+            <small>Generator Source</small>
+          </li>
+          <li class="directory-card" data-keywords="FLA FLC HP motor nameplate">
+            <h4><a href="https://shailearning.com/how-to-calculate-motor-fla-inrush-and-protection/">Motor Full-Load Current<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate running current from motor rating, voltage, power factor and efficiency.</p>
+            <small>ShaiLearning</small>
           </li>
         </ul>
       </section>
@@ -163,6 +290,11 @@
             <p>Open common engineering model formats including STEP, IFC and DGN.</p>
             <small>Adjie Brotools</small>
           </li>
+          <li class="directory-card" data-keywords="SCADA 4-20 mA PLC RTU calibration">
+            <h4><a href="https://gridcircuits.com/analog-scaling-calculator/">SCADA Analog Scaling<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Convert between raw input counts or signal values and engineering units.</p>
+            <small>GridCircuits</small>
+          </li>
         </ul>
       </section>
       <section class="directory-group" data-category="planning" aria-labelledby="category-planning">
@@ -186,7 +318,7 @@
           <li class="directory-card" data-keywords="BESS microgrid economics resilience">
             <h4><a href="https://reopt.nlr.gov/tool">REopt Web Tool<span aria-hidden="true"> ↗</span></a></h4>
             <p>Compare technology sizing and dispatch for distributed energy and resilience projects.</p>
-            <small>NLR</small>
+            <small>NLR · <a href="https://github.com/divyesh-khandhedia/REopt.jl">GitHub fork</a></small>
           </li>
           <li class="directory-card" data-keywords="solar yield photovoltaic energy">
             <h4><a href="https://pvwatts.nlr.gov/">PVWatts<span aria-hidden="true"> ↗</span></a></h4>
@@ -207,6 +339,11 @@
             <h4><a href="https://www.renewables.ninja/">Renewables.ninja<span aria-hidden="true"> ↗</span></a></h4>
             <p>Generate hourly modeled wind or PV production for a specified location.</p>
             <small>Renewables.ninja</small>
+          </li>
+          <li class="directory-card" data-keywords="UPS autonomy battery kWh BESS backup">
+            <h4><a href="https://giee.org/battery-storage-sizing-calculator/">Battery Backup Sizing<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate nameplate battery capacity, C-rate and recharge needs from load and backup duration.</p>
+            <small>GIEE</small>
           </li>
         </ul>
       </section>
@@ -236,12 +373,17 @@
           <li class="directory-card" data-keywords="AEMO NEM WEM Australia emissions">
             <h4><a href="https://explore.openelectricity.org.au/energy/nem/">Open Electricity<span aria-hidden="true"> ↗</span></a></h4>
             <p>Explore generation, demand and prices across Australian electricity markets.</p>
-            <small>Open Electricity · Australia</small>
+            <small>Open Electricity · Australia · <a href="https://github.com/divyesh-khandhedia/opennem">GitHub fork</a></small>
           </li>
           <li class="directory-card" data-keywords="CO2 emissions renewable mix global">
             <h4><a href="https://app.electricitymaps.com/map/fifteen_minutes">Electricity Maps<span aria-hidden="true"> ↗</span></a></h4>
             <p>Explore regional generation mix, electricity flows and carbon intensity.</p>
             <small>Electricity Maps · Global</small>
+          </li>
+          <li class="directory-card" data-keywords="UK DNO grid connection headroom network capacity">
+            <h4><a href="https://griddata.uk/">GB Grid Capacity Map<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore available connection-capacity data and network infrastructure on a map.</p>
+            <small>GB Grid Data · Great Britain</small>
           </li>
         </ul>
       </section>
@@ -282,6 +424,41 @@
             <h4><a href="https://opentools.globalpst.org/">G-PST Open Tools Portal<span aria-hidden="true"> ↗</span></a></h4>
             <p>Find more open-source grid tools, models and datasets.</p>
             <small>Global Power System Transformation Consortium · Directory</small>
+          </li>
+          <li class="directory-card" data-keywords="AC DC optimization IEEE 14 bus case">
+            <h4><a href="https://github.com/divyesh-khandhedia/matpower">MATPOWER<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Run steady-state load flow and OPF with standard test cases.</p>
+            <small>MATLAB / Octave · GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="hosting capacity distribution QSTS Python">
+            <h4><a href="https://github.com/divyesh-khandhedia/OpenDSSDirect.py">OpenDSSDirect.py<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Automate distribution feeder studies through a direct OpenDSS engine interface.</p>
+            <small>Python · GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="electrical calculations impedance phasor faults">
+            <h4><a href="https://github.com/divyesh-khandhedia/ElectricPy">ElectricPy<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Use documented electrical-engineering formulas and phasor utilities in scripts.</p>
+            <small>Python · GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="modeling Julia Sienna network data">
+            <h4><a href="https://github.com/divyesh-khandhedia/PowerSystems.jl">PowerSystems.jl<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Build reusable power-system data models for the Sienna ecosystem.</p>
+            <small>Julia · GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="ES modules engineering formulas">
+            <h4><a href="https://github.com/divyesh-khandhedia/calculators">Engineering Bible Calculator Library<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Inspect and reuse calculator implementations with documented assumptions and worked examples.</p>
+            <small>JavaScript · GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="PowerSystems.jl test cases benchmark Julia">
+            <h4><a href="https://github.com/divyesh-khandhedia/PowerSystemCaseBuilder.jl">Sienna Case Builder<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Load benchmark cases and build network models for Sienna simulation workflows.</p>
+            <small>Julia · GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="IEEE 14 bus case validation educational Python">
+            <h4><a href="https://github.com/divyesh-khandhedia/power-systems-grid-toolkit">IEEE 14-Bus Study Toolkit<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Review worked benchmark studies for power flow, faults, dispatch and dynamics.</p>
+            <small>Python · GitHub fork</small>
           </li>
         </ul>
       </section>
