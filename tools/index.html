@@ -3,28 +3,294 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browser tools for grid strength, small-signal damping, BESS ramp buffering and interactive AC load flow.">
+  <meta name="description" content="A power-system engineering toolbox and searchable directory for grid studies, automation, planning and market data.">
   <title>Power System Tools | Divyesh Khandhedia</title>
   <link rel="stylesheet" href="./tools.css">
   <script defer src="./tools.js"></script>
+  <script defer src="./directory.js"></script>
 </head>
 <body>
   <header class="masthead">
     <div class="wrap">
       <a class="brand" href="../">Divyesh Khandhedia</a>
-      <nav aria-label="Tools">
-        <a href="#grid">Grid equivalent</a>
-        <a href="#modes">Modal analysis</a>
-        <a href="#storage">BESS buffer</a>
-        <a href="./load-flow/">Load flow ↗</a>
+      <nav aria-label="Tools page">
+        <a href="#built-in">Built-in tools</a>
+        <a href="#directory">Tool directory</a>
+        <a href="../">Portfolio</a>
       </nav>
     </div>
   </header>
   <main class="wrap">
     <header class="intro">
       <h1>Power System Tools</h1>
-      <p>Build a grid equivalent, screen eigenvalues, and size a battery buffer. Calculations run in your browser.</p>
+      <p>Run a quick calculation or find the right tool for a grid study.</p>
     </header>
+
+    <section id="built-in" class="built-in" aria-labelledby="built-in-heading">
+      <h2 id="built-in-heading">Built-in tools</h2>
+      <ul class="quick-grid">
+        <li><a href="#grid"><strong>SCR grid equivalent</strong><span>Fault level and Thevenin R + jX</span></a></li>
+        <li><a href="#modes"><strong>Modal damping</strong><span>Frequency and damping from eigenvalues</span></a></li>
+        <li><a href="#storage"><strong>BESS ramp buffer</strong><span>Peak MW and usable MWh</span></a></li>
+        <li><a href="./load-flow/"><strong>AC load-flow lab</strong><span>Interactive bus and branch model</span></a></li>
+      </ul>
+    </section>
+
+    <section id="directory" aria-labelledby="directory-heading">
+      <div class="directory-heading">
+        <h2 id="directory-heading">Tool directory</h2>
+        <p>Each link opens the provider’s tool, demo or documentation.</p>
+      </div>
+      <div class="directory-controls" hidden>
+        <label for="directory-query">Search tools</label>
+        <div class="directory-search">
+          <input id="directory-query" type="search" placeholder="Try PSCAD, short circuit or India" autocomplete="off">
+          <button id="directory-reset" type="button">Reset</button>
+        </div>
+        <div class="directory-filters" role="group" aria-label="Filter by category">
+          <button type="button" data-filter="all" aria-pressed="true">All categories</button>
+          <button type="button" data-filter="simulation" aria-pressed="false">Network studies</button>
+          <button type="button" data-filter="dynamics" aria-pressed="false">Dynamics &amp; control</button>
+          <button type="button" data-filter="protection" aria-pressed="false">Faults &amp; protection</button>
+          <button type="button" data-filter="automation" aria-pressed="false">Automation &amp; plots</button>
+          <button type="button" data-filter="planning" aria-pressed="false">Planning &amp; renewables</button>
+          <button type="button" data-filter="grid-data" aria-pressed="false">Grid &amp; market data</button>
+          <button type="button" data-filter="local" aria-pressed="false">Local software &amp; references</button>
+        </div>
+        <p id="directory-count" role="status"></p>
+      </div>
+      <p id="directory-empty" hidden>No tools match. Try a different search or category.</p>
+      <section class="directory-group" data-category="simulation" aria-labelledby="category-simulation">
+        <h3 id="category-simulation">Network studies</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="power flow SLD">
+            <h4><a href="https://tool.adjiebrotots.com/loadflow-simulator/">Adjie Load Flow Simulator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Draw a single-line diagram, solve load flow, and inspect bus voltages and line flows.</p>
+            <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="pandapower OpenDSS IEC 60909 N-1">
+            <h4><a href="https://electrisim.com/documentation">Electrisim<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Model networks for load flow, short circuit, harmonics, OPF and contingency analysis.</p>
+            <small>Electrisim · Cloud fee; local option</small>
+          </li>
+          <li class="directory-card" data-keywords="IEEE 118 bus IEC 60909">
+            <h4><a href="https://powergrid.tools/demo?lang=en">PowerGridTools live demo<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore example networks with load-flow and short-circuit results on a single-line diagram.</p>
+            <small>PowerGridTools · Demo</small>
+          </li>
+          <li class="directory-card" data-keywords="network analysis CGMES OpenLoadFlow">
+            <h4><a href="https://www.gridsuite.org/">GridSuite<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore the PowSyBl-based applications for grid modeling, operation and planning.</p>
+            <small>LF Energy · Platform</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="dynamics" aria-labelledby="category-dynamics">
+        <h3 id="category-dynamics">Dynamics &amp; control</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="transient stability RMS time domain disturbance">
+            <h4><a href="https://www.gridsimlab.com/">GridSimLab<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Run educational fault simulations and examine the dynamic response after clearing.</p>
+            <small>GridSimLab</small>
+          </li>
+          <li class="directory-card" data-keywords="small signal modal analysis eigenvalues PSS damping">
+            <h4><a href="https://powersystemoscillations.github.io/">Power System Oscillations<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Get example data and software for oscillation analysis and control.</p>
+            <small>Book companion · Reference</small>
+          </li>
+          <li class="directory-card" data-keywords="EMT circuits electronics RLC">
+            <h4><a href="https://www.falstad.com/circuit/">CircuitJS<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Build and simulate circuit-level examples with animated currents and oscilloscope traces.</p>
+            <small>Falstad · Educational</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="protection" aria-labelledby="category-protection">
+        <h3 id="category-protection">Faults &amp; protection</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="short circuit hardware SCCR">
+            <h4><a href="https://www.eaton.com/in/en-us/products/electrical-circuit-protection/fuses/fault-current-calculator.html">FC² Fault Current Calculator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate available fault current in electrical distribution systems.</p>
+            <small>Eaton Bussmann</small>
+          </li>
+          <li class="directory-card" data-keywords="Ecodial cable breaker protection voltage drop">
+            <h4><a href="https://www.se.com/in/en/product-range/61553-online-electrical-calculation-tools/">Electrical Calculation Tools<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Find low-voltage sizing and electrical-network calculation tools.</p>
+            <small>Schneider Electric</small>
+          </li>
+          <li class="directory-card" data-keywords="unbalanced faults Fortescue sequence phase angle">
+            <h4><a href="https://phasorprep.com/tools/symmetrical-components-calculator">Symmetrical Components Calculator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Convert phase phasors to positive, negative and zero sequence components and plot the vectors.</p>
+            <small>PhasorPrep</small>
+          </li>
+          <li class="directory-card" data-keywords="relay oscillography CFG DAT waveform IEEE C37.111">
+            <h4><a href="https://sagswell.com/comtrade-viewer">COMTRADE Viewer<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Inspect disturbance waveforms from COMTRADE records in the browser.</p>
+            <small>SagSwell</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="automation" aria-labelledby="category-automation">
+        <h3 id="category-automation">Automation &amp; plots</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="DIgSILENT automation ComLdf">
+            <h4><a href="https://tool.adjiebrotots.com/powerfactory-scripter/">PowerFactory Scripter<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Build DIgSILENT Python scripts for study cases, contingencies and results export.</p>
+            <small>Adjie Brotools · Simulator required to run scripts</small>
+          </li>
+          <li class="directory-card" data-keywords="PSCAD V5 simulation sets automation">
+            <h4><a href="https://tool.adjiebrotots.com/pscad-scripter/">PSCAD Scripter<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Generate Python automation scripts for PSCAD build, run and EMT checks.</p>
+            <small>Adjie Brotools · Simulator required to run scripts</small>
+          </li>
+          <li class="directory-card" data-keywords="waveforms PSCAD PSS/E charts time series">
+            <h4><a href="https://tool.adjiebrotots.com/graphvisualiser/">Graph Visualiser<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Plot channels from CSV or Excel exports and interactively inspect the traces.</p>
+            <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="energy balance losses Sankey SVG">
+            <h4><a href="https://tool.adjiebrotots.com/sankeycreator/">Sankey Diagram Creator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Make energy-flow diagrams and export them as images or SVG.</p>
+            <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="data tree model debug">
+            <h4><a href="https://tool.adjiebrotots.com/jsonvisualiser/">JSON Visualiser<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Browse structured network exports or API results as a tree.</p>
+            <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="CAD substation equipment 3D">
+            <h4><a href="https://tool.adjiebrotots.com/online-3d-viewer/">Online 3D Viewer<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Open common engineering model formats including STEP, IFC and DGN.</p>
+            <small>Adjie Brotools</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="planning" aria-labelledby="category-planning">
+        <h3 id="category-planning">Planning &amp; renewables</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="economic dispatch LMP optimization OPF">
+            <h4><a href="https://tool.adjiebrotots.com/ed-uc-simulator/">ED/UC Simulator<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore dispatch, unit commitment and nodal prices on a bus network.</p>
+            <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="generation planning gas wind solar battery least cost">
+            <h4><a href="https://tool.adjiebrotots.com/capacity-expansion-planner/">Capacity Expansion Planner<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare when to build generation and storage under changing demand and costs.</p>
+            <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="WEM AEMO Australia dispatch XLSX">
+            <h4><a href="https://tool.adjiebrotots.com/wemconstraint-checker/">WEM Constraint Equation Checker<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Screen dispatch spreadsheets against market network constraints.</p>
+            <small>Adjie Brotools · Western Australia</small>
+          </li>
+          <li class="directory-card" data-keywords="BESS microgrid economics resilience">
+            <h4><a href="https://reopt.nlr.gov/tool">REopt Web Tool<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare technology sizing and dispatch for distributed energy and resilience projects.</p>
+            <small>NLR</small>
+          </li>
+          <li class="directory-card" data-keywords="solar yield photovoltaic energy">
+            <h4><a href="https://pvwatts.nlr.gov/">PVWatts<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Estimate grid-connected PV generation using location and system parameters.</p>
+            <small>NLR</small>
+          </li>
+          <li class="directory-card" data-keywords="GHI DNI irradiance solar project screening">
+            <h4><a href="https://globalsolaratlas.info/map">Global Solar Atlas<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore solar resource and photovoltaic potential by location.</p>
+            <small>World Bank / ESMAP &amp; Solargis</small>
+          </li>
+          <li class="directory-card" data-keywords="wind speed power density siting">
+            <h4><a href="https://globalwindatlas.info/">Global Wind Atlas<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Compare wind resource maps by location and hub height.</p>
+            <small>DTU &amp; World Bank / ESMAP</small>
+          </li>
+          <li class="directory-card" data-keywords="capacity factor weather timeseries">
+            <h4><a href="https://www.renewables.ninja/">Renewables.ninja<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Generate hourly modeled wind or PV production for a specified location.</p>
+            <small>Renewables.ninja</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="grid-data" aria-labelledby="category-grid-data">
+        <h3 id="category-grid-data">Grid &amp; market data</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="CEA India demand peak">
+            <h4><a href="https://npp.gov.in/publishedReports">India National Power Portal<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Browse official Indian power-sector reports, including daily generation and supply position.</p>
+            <small>Government of India</small>
+          </li>
+          <li class="directory-card" data-keywords="Texas frequency renewables storage prices">
+            <h4><a href="https://www.ercot.com/gridmktinfo/dashboards">ERCOT Grid Dashboards<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Track system demand, generation mix, market prices and grid conditions.</p>
+            <small>ERCOT · Texas</small>
+          </li>
+          <li class="directory-card" data-keywords="Europe day-ahead outage cross border electricity">
+            <h4><a href="https://transparency.entsoe.eu/">ENTSO-E Transparency Platform<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore European generation, load, exchanges and market data.</p>
+            <small>ENTSO-E · Europe</small>
+          </li>
+          <li class="directory-card" data-keywords="EIA form 930 United States">
+            <h4><a href="https://www.eia.gov/electricity/gridmonitor/">Hourly Electric Grid Monitor<span aria-hidden="true"> ↗</span></a></h4>
+            <p>View hourly demand, generation and interchange for U.S. balancing authorities.</p>
+            <small>U.S. EIA</small>
+          </li>
+          <li class="directory-card" data-keywords="AEMO NEM WEM Australia emissions">
+            <h4><a href="https://explore.openelectricity.org.au/energy/nem/">Open Electricity<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore generation, demand and prices across Australian electricity markets.</p>
+            <small>Open Electricity · Australia</small>
+          </li>
+          <li class="directory-card" data-keywords="CO2 emissions renewable mix global">
+            <h4><a href="https://app.electricitymaps.com/map/fifteen_minutes">Electricity Maps<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Explore regional generation mix, electricity flows and carbon intensity.</p>
+            <small>Electricity Maps · Global</small>
+          </li>
+        </ul>
+      </section>
+      <section class="directory-group" data-category="local" aria-labelledby="category-local">
+        <h3 id="category-local">Local software &amp; references</h3>
+        <ul class="directory-grid">
+          <li class="directory-card" data-keywords="modal small signal dynamics DAE">
+            <h4><a href="https://github.com/divyesh-khandhedia/andes">ANDES<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Run power flow, time-domain simulation and eigenanalysis.</p>
+            <small>Python · Your GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="impedance Nyquist converter">
+            <h4><a href="https://github.com/divyesh-khandhedia/Z-tool">Z-tool<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Analyze power-system stability in the frequency domain.</p>
+            <small>Python · Your GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="data center large electronic load PERC1">
+            <h4><a href="https://github.com/divyesh-khandhedia/perc-studio">PERC Studio<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Set up large electronic load models for PSS®E.</p>
+            <small>PSS®E · Your GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="OUT DAT text log">
+            <h4><a href="https://github.com/divyesh-khandhedia/Outfile-Viewer">Outfile Viewer<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Inspect engineering log and output files using a local viewer.</p>
+            <small>Streamlit · Your GitHub fork</small>
+          </li>
+          <li class="directory-card" data-keywords="distribution IEC 60909 contingency">
+            <h4><a href="https://pandapower.readthedocs.io/en/latest/">pandapower<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Automate network modeling, power flow, short circuit and time-series analysis.</p>
+            <small>Python · Documentation</small>
+          </li>
+          <li class="directory-card" data-keywords="unit commitment optimization sector coupling">
+            <h4><a href="https://docs.pypsa.org/latest/">PyPSA<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Model dispatch, capacity expansion and large energy-system scenarios.</p>
+            <small>Python · Documentation</small>
+          </li>
+          <li class="directory-card" data-keywords="catalog planning operations benchmarking">
+            <h4><a href="https://opentools.globalpst.org/">G-PST Open Tools Portal<span aria-hidden="true"> ↗</span></a></h4>
+            <p>Find more open-source grid tools, models and datasets.</p>
+            <small>Global Power System Transformation Consortium · Directory</small>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <div class="directory-heading calculator-heading">
+      <h2>Calculators</h2>
+      <p>These calculations run in your browser.</p>
+    </div>
 
     <section id="grid" class="tool">
       <header>
@@ -109,18 +375,6 @@
       <p class="hint"><a href="https://github.com/bertramwooster/power-system-lab">Upstream project</a> · <a href="./load-flow/license.html">MIT license and local changes</a></p>
     </section>
 
-    <section class="tool library">
-      <header>
-        <h2>Local simulation tools</h2>
-        <p>For studies that require Python or a native simulator, see these repositories and their setup instructions.</p>
-      </header>
-      <ul>
-        <li><a href="https://github.com/divyesh-khandhedia/andes">ANDES</a> · Power flow, time-domain simulation and eigenanalysis</li>
-        <li><a href="https://github.com/divyesh-khandhedia/Z-tool">Z-tool</a> · Frequency-domain stability analysis</li>
-        <li><a href="https://github.com/divyesh-khandhedia/perc-studio">PERC Studio</a> · Large electronic load modeling in PSS®E</li>
-        <li><a href="https://github.com/divyesh-khandhedia/Outfile-Viewer">Outfile Viewer</a> · Streamlit engineering file viewer</li>
-      </ul>
-    </section>
   </main>
   <footer class="wrap"><a href="../">Back to portfolio</a></footer>
 </body>

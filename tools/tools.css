@@ -55,3 +55,77 @@ thead { background: #e9f3ee; }
 .error, .unstable { color: #9c251d; font-weight: 650; }
 .below { color: #725109; font-weight: 650; }
 footer { padding-block: 1rem 2rem; }
+
+[hidden] { display: none !important; }
+.intro {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+  padding-bottom: clamp(1.5rem, 4vw, 2.75rem);
+}
+.built-in, #directory, .calculator-heading { margin-bottom: 2rem; }
+.quick-grid, .directory-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: .75rem;
+}
+.quick-grid {
+  margin: .8rem 0 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+.quick-grid a {
+  background: #102f2a;
+  border: 1px solid #27483e;
+  border-radius: .65rem;
+  color: #f3fcf6;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  height: 100%;
+  padding: .8rem 1rem;
+  text-decoration: none;
+}
+.quick-grid a:hover { background: #204c40; }
+.quick-grid span { color: #cce4d7; font-size: .86rem; }
+.directory-heading p { color: var(--muted); margin-top: .3rem; }
+.directory-controls {
+  background: #e7f0eb;
+  border: 1px solid var(--border);
+  border-radius: .8rem;
+  margin-top: .8rem;
+  padding: 1rem;
+}
+.directory-search { display: flex; align-items: stretch; gap: .55rem; margin-top: .3rem; }
+.directory-search input { margin: 0; min-width: 0; }
+.directory-search button { flex-shrink: 0; }
+.directory-filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
+.directory-filters button {
+  background: #f9fcfa;
+  border: 1px solid #8aa99a;
+  border-radius: 100vw;
+  color: #21463b;
+  font-size: .85rem;
+  padding: .35rem .75rem;
+}
+.directory-filters button:hover { border-color: var(--accent); }
+.directory-filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+#directory-count { color: var(--muted); font-size: .85rem; margin-top: .75rem; }
+#directory-empty { margin-top: 1rem; }
+.directory-group { margin-top: 1.15rem; }
+.directory-group h3 { font-size: 1.15rem; margin: 0 0 .55rem; }
+.directory-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  margin: 0;
+}
+.directory-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: .65rem;
+  display: flex;
+  flex-direction: column;
+  padding: .75rem .95rem;
+}
+.directory-card h4 { font-size: 1.04rem; margin: 0 0 .3rem; line-height: 1.3; }
+.directory-card p { flex: 1; font-size: .9rem; }
+.directory-card small { margin-top: .6rem; }
+.calculator-heading { padding-top: 1rem; margin-bottom: .7rem; border-top: 1px solid var(--border); }
