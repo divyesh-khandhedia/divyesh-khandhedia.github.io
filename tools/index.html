@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browser tools for grid strength, small-signal damping, BESS ramp buffering and interactive AC load flow.">
+  <title>Power System Tools | Divyesh Khandhedia</title>
+  <link rel="stylesheet" href="./tools.css">
+  <script defer src="./tools.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="../">Divyesh Khandhedia</a>
+      <nav aria-label="Tools">
+        <a href="#grid">Grid equivalent</a>
+        <a href="#modes">Modal analysis</a>
+        <a href="#storage">BESS buffer</a>
+        <a href="./load-flow/">Load flow ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <header class="intro">
+      <h1>Power System Tools</h1>
+      <p>Build a grid equivalent, screen eigenvalues, and size a battery buffer. Calculations run in your browser.</p>
+    </header>
+
+    <section id="grid" class="tool">
+      <header>
+        <h2>Grid equivalent from SCR</h2>
+        <p>Convert a target short-circuit ratio and X/R into a positive-sequence Thevenin equivalent at the point of interconnection.</p>
+      </header>
+      <form id="grid-form">
+        <div class="fields">
+          <label>POI voltage <small>kV line-to-line</small><input name="kv" type="number" min="0.001" step="any" required value="115"></label>
+          <label>Plant rating <small>MW</small><input name="mw" type="number" min="0.001" step="any" required value="200"></label>
+          <label>Short-circuit ratio <small>SC MVA / MW</small><input name="scr" type="number" min="0.001" step="any" required value="3"></label>
+          <label>Grid X/R <small>dimensionless</small><input name="xr" type="number" min="0" step="any" required value="15"></label>
+          <label>System base <small>MVA</small><input name="base" type="number" min="0.001" step="any" required value="100"></label>
+        </div>
+        <button>Calculate equivalent</button>
+      </form>
+      <div id="grid-result" class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Uses a balanced three-phase fault, nominal prefault voltage, and grid short-circuit contribution excluding the plant under study. Sₛ꜀ = SCR × plant MW. |Z| = kV² / Sₛ꜀. Zbase = kV² / base MVA. SCR is a screening metric. Nearby inverter controls and site-specific criteria require separate assessment.</p>
+        <p><a href="https://www.nerc.com/globalassets/programs/rapa/ra/short_circuit_whitepaper_final_1_26_18.pdf">NERC · Short-Circuit Modeling and System Strength</a></p>
+      </details>
+    </section>
+
+    <section id="modes" class="tool">
+      <header>
+        <h2>Modal damping from eigenvalues</h2>
+        <p>Paste continuous-time eigenvalues to compare frequency, damping ratio and growth or decay.</p>
+      </header>
+      <form id="modes-form">
+        <label>Eigenvalues <small>One σ, ω pair per line, in s⁻¹ and rad/s</small>
+          <textarea name="modes" rows="4" required spellcheck="false" aria-describedby="mode-format">-0.30, 4.40
+-0.02, 2.10
+0.07, -6.28
+-1.50, 0</textarea>
+        </label>
+        <p class="hint" id="mode-format">Paste CSV or tab-separated pairs. The optional first row can be <code>real,imag</code>.</p>
+        <div class="fields single">
+          <label>Minimum damping for screening <small>%</small><input name="threshold" type="number" min="0" max="100" step="any" required value="5"></label>
+        </div>
+        <button>Screen modes</button>
+      </form>
+      <div id="modes-result" class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>For λ = σ + jω, f = |ω| / (2π) and ζ = −σ / |λ|. Envelope time constant = 1 / |σ|. The damping threshold applies to decaying oscillatory modes. Real modes use the sign of σ and have no oscillation frequency beyond 0 Hz. Each supplied row is reported, including conjugate pairs.</p>
+        <p><a href="https://www.mdpi.com/1996-1073/18/21/5762">Modal analysis equations · Energies</a></p>
+      </details>
+    </section>
+
+    <section id="storage" class="tool">
+      <header>
+        <h2>BESS ramp buffer</h2>
+        <p>Estimate battery power and usable energy to hold grid import or generator output at a fixed target through a load profile.</p>
+      </header>
+      <form id="storage-form">
+        <label>Load profile <small>One time in seconds and load in MW per line</small>
+          <textarea name="profile" rows="5" required spellcheck="false" aria-describedby="storage-format">0, 80
+2, 180
+8, 180
+10, 80
+20, 60</textarea>
+        </label>
+        <p class="hint" id="storage-format">Paste CSV or tab-separated pairs in time order. The optional first row can be <code>time_s,load_mw</code>.</p>
+        <div class="fields">
+          <label>Fixed supply target <small>MW</small><input name="target" type="number" step="any" required value="80"></label>
+          <label>Charge efficiency <small>%</small><input name="charge" type="number" min="0.01" max="100" step="any" required value="95"></label>
+          <label>Discharge efficiency <small>%</small><input name="discharge" type="number" min="0.01" max="100" step="any" required value="95"></label>
+        </div>
+        <button>Size battery buffer</button>
+      </form>
+      <div id="storage-result" class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Battery AC power is load minus target. Power varies linearly between samples. Stored energy falls at P/ηdis during discharge and rises at |P| × ηchg during charge. The minimum usable energy is the highest minus lowest stored-energy deviation, including crossings of the supply target. The estimate covers the supplied interval. For repeatable operation, restore any net energy change between events. Nameplate sizing also depends on the allowed SOC window, degradation and reserves.</p>
+      </details>
+    </section>
+
+    <section class="tool library">
+      <header>
+        <h2>Interactive AC load-flow lab</h2>
+        <p>Adjust bus and branch data and inspect bus voltages, branch flows and losses on a test network. Teaching material by Mohd Aarish Shaheen, University of Kashmir.</p>
+      </header>
+      <a class="button" href="./load-flow/">Open load-flow lab</a>
+      <p class="hint"><a href="https://github.com/bertramwooster/power-system-lab">Upstream project</a> · <a href="./load-flow/license.html">MIT license and local changes</a></p>
+    </section>
+
+    <section class="tool library">
+      <header>
+        <h2>Local simulation tools</h2>
+        <p>For studies that require Python or a native simulator, see these repositories and their setup instructions.</p>
+      </header>
+      <ul>
+        <li><a href="https://github.com/divyesh-khandhedia/andes">ANDES</a> · Power flow, time-domain simulation and eigenanalysis</li>
+        <li><a href="https://github.com/divyesh-khandhedia/Z-tool">Z-tool</a> · Frequency-domain stability analysis</li>
+        <li><a href="https://github.com/divyesh-khandhedia/perc-studio">PERC Studio</a> · Large electronic load modeling in PSS®E</li>
+        <li><a href="https://github.com/divyesh-khandhedia/Outfile-Viewer">Outfile Viewer</a> · Streamlit engineering file viewer</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="wrap"><a href="../">Back to portfolio</a></footer>
+</body>
+</html>
