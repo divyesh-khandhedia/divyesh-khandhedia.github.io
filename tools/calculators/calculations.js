@@ -172,3 +172,12 @@ export function meritOrder(units, demand) {
   });
   return { dispatch, total: dispatch.reduce((total, unit) => total + unit.mw * unit.cost, 0) };
 }
+
+export const additionalCalculations = {
+  "pll": n => { const w=2*Math.PI*n('hz'); return [['Proportional gain',2*n('z')*w],['Integral gain',w*w]]; },
+  "ground": n => { return [['Minimum thermal area',1000*n('ka')*Math.sqrt(n('t'))/n('k'),'mm²']]; },
+  "tx-loss": n => { const f=n('load')/100, load=n('copper')*f*f, loss=n('core')+load, out=n('rating')*f*n('pf'); return [['Load loss',load,'kW'],['Total loss',loss,'kW'],['Output power',out,'kW'],['Efficiency',out+loss ? 100*out/(out+loss) : null,'%']]; },
+  "three-phase": n => { const s=n('kw')/n('pf'); return [['Apparent power',s,'kVA'],['Line current',1000*s/(Math.sqrt(3)*n('v')),'A'],['Reactive power magnitude',s*Math.sqrt(1-n('pf')**2),'kVAr']]; },
+  "scada": n => { const span=n('rawHi')-n('rawLo'); if(span<=0) throw new Error('Raw high must exceed raw low.'); const f=(n('raw')-n('rawLo'))/span; return [['Engineering value',n('lo')+f*(n('hi')-n('lo'))],['Input span',100*f,'%'],['Range status',f>=0&&f<=1 ? 'Within range' : 'Outside range']]; },
+  "volt-drop": n => { const pf=n('pf'), dv=Math.sqrt(3)*n('i')*n('length')*(n('r')*Math.abs(pf)+n('x')*(pf<0 ? -1 : 1)*Math.sqrt(1-pf*pf)); return [['Voltage drop',dv,'V'],['Voltage drop',100*dv/n('v'),'%']]; },
+};

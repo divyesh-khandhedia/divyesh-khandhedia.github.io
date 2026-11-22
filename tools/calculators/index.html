@@ -20,7 +20,7 @@
       <noscript><p>Enable JavaScript to run the calculators.</p></noscript>
     </header>
     <nav class="calculator-nav" aria-label="Jump to a calculator">
-      <ul><li><a href="#per-unit">Per-unit conversion</a></li><li><a href="#symmetrical">Symmetrical components</a></li><li><a href="#fault">Sequence-network fault current</a></li><li><a href="#voltage">Two-bus PV curve</a></li><li><a href="#frequency">Frequency nadir and RoCoF</a></li><li><a href="#idmt">IEC IDMT relay timing</a></li><li><a href="#transformer">Transformer impedance split</a></li><li><a href="#cable">Cable DC resistance at temperature</a></li><li><a href="#dispatch">Merit-order dispatch</a></li></ul>
+      <ul><li><a href="#per-unit">Per-unit conversion</a></li><li><a href="#symmetrical">Symmetrical components</a></li><li><a href="#fault">Sequence-network fault current</a></li><li><a href="#voltage">Two-bus PV curve</a></li><li><a href="#frequency">Frequency nadir and RoCoF</a></li><li><a href="#idmt">IEC IDMT relay timing</a></li><li><a href="#transformer">Transformer impedance split</a></li><li><a href="#cable">Cable DC resistance at temperature</a></li><li><a href="#dispatch">Merit-order dispatch</a></li><li><a href="#pll">SRF-PLL tuning</a></li><li><a href="#ground">Grounding conductor thermal sizing</a></li><li><a href="#tx-loss">Transformer losses and efficiency</a></li><li><a href="#three-phase">Generator electrical conversions</a></li><li><a href="#scada">SCADA analog scaling</a></li><li><a href="#volt-drop">Cable voltage drop</a></li></ul>
     </nav>
     <section id="per-unit" class="tool">
       <header><h2>Per-unit conversion</h2><p>Change the voltage and MVA base of a three-phase impedance.</p></header>
@@ -195,6 +195,90 @@ Gas B, 30, 120, 65</textarea></label>
       <details><summary>Method and assumptions</summary>
         <p>Start at each unit’s minimum output, then allocate remaining MW in ascending marginal-cost order up to each maximum. The objective is energy cost per hour. The model omits network constraints, losses, ramping, reserves and unit commitment.</p>
       </details>
+    </section>
+    <section id="pll" class="tool">
+      <header><h2>SRF-PLL tuning</h2><p>Estimate gains for a normalized synchronous-reference-frame PLL.</p></header>
+      <form data-calculator="pll">
+        <div class="fields">
+          <label>Natural frequency (Hz)<input name="hz" type="number" value="20" step="any" min="0.001" required></label>
+          <label>Damping ratio<input name="z" type="number" value="0.707" step="any" min="0.001" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary><p>Kp = 2ζωn and Ki = ωn² for a normalized phase detector and a continuous-time PI loop. Natural frequency is the design input. Sampling, current-loop coupling and grid impedance are outside this model.</p><p><a href="https://eepowerschool.com/tools/pll-tuner/">Technical reference</a></p></details>
+    </section>
+    <section id="ground" class="tool">
+      <header><h2>Grounding conductor thermal sizing</h2><p>Estimate conductor area for a short-duration fault.</p></header>
+      <form data-calculator="ground">
+        <div class="fields">
+          <label>Conductor fault current (kA RMS)<input name="ka" type="number" value="10" step="any" min="0" required></label>
+          <label>Clearing time (s)<input name="t" type="number" value="0.5" step="any" min="0.001" required></label>
+          <label>Material factor k (A√s/mm²)<input name="k" type="number" value="143" step="any" min="0.001" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary><p>Uses S = I√t/k. Obtain k for the actual conductor and initial and final temperatures. Use current in the conductor under study. Mechanical minimum, touch and step voltage, and grounding grid design are separate checks.</p><p><a href="https://gridcircuits.com/grounding-conductor-sizing-calculator/">Technical reference</a></p></details>
+    </section>
+    <section id="tx-loss" class="tool">
+      <header><h2>Transformer losses and efficiency</h2><p>Estimate losses at a given loading and power factor.</p></header>
+      <form data-calculator="tx-loss">
+        <div class="fields">
+          <label>Rated apparent power (kVA)<input name="rating" type="number" value="1000" step="any" min="0.001" required></label>
+          <label>Loading (%)<input name="load" type="number" value="75" step="any" min="0" required></label>
+          <label>Load power factor<input name="pf" type="number" value="0.9" step="any" min="0" max="1" required></label>
+          <label>No-load loss (kW)<input name="core" type="number" value="1.2" step="any" min="0" required></label>
+          <label>Rated load loss (kW)<input name="copper" type="number" value="10" step="any" min="0" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary><p>Uses constant no-load loss and load loss proportional to current squared at nominal voltage. Power factor is a magnitude. Use test losses at the applicable reference temperature.</p><p><a href="https://stardeltapower.co.uk/tools/transformer-losses/">Technical reference</a></p></details>
+    </section>
+    <section id="three-phase" class="tool">
+      <header><h2>Generator electrical conversions</h2><p>Convert balanced three-phase current, kVA, kW and kVAr from a kW rating.</p></header>
+      <form data-calculator="three-phase">
+        <div class="fields">
+          <label>Active power (kW)<input name="kw" type="number" value="200" step="any" min="0" required></label>
+          <label>Line-to-line voltage (V)<input name="v" type="number" value="415" step="any" min="0.001" required></label>
+          <label>Power factor magnitude<input name="pf" type="number" value="0.8" step="any" min="0.001" max="1" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary><p>S = P/PF and I = 1000S/(√3V). Reactive power is reported as a magnitude. The result covers steady-state balanced loading. Generator sizing also requires load steps and site derating.</p><p><a href="https://generatorsource.com/tools-info/power-calculators/">Technical reference</a></p></details>
+    </section>
+    <section id="scada" class="tool">
+      <header><h2>SCADA analog scaling</h2><p>Convert raw counts or analog signals to engineering units.</p></header>
+      <form data-calculator="scada">
+        <div class="fields">
+          <label>Raw input<input name="raw" type="number" value="12" step="any" required></label>
+          <label>Raw low<input name="rawLo" type="number" value="4" step="any" required></label>
+          <label>Raw high<input name="rawHi" type="number" value="20" step="any" required></label>
+          <label>Engineering low<input name="lo" type="number" value="0" step="any" required></label>
+          <label>Engineering high<input name="hi" type="number" value="200" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary><p>Uses linear interpolation and extrapolates outside the raw range. Reversed engineering ranges are allowed.</p><p><a href="https://gridcircuits.com/analog-scaling-calculator/">Technical reference</a></p></details>
+    </section>
+    <section id="volt-drop" class="tool">
+      <header><h2>Cable voltage drop</h2><p>Estimate balanced three-phase voltage drop from cable resistance and reactance.</p></header>
+      <form data-calculator="volt-drop">
+        <div class="fields">
+          <label>Line-to-line voltage (V)<input name="v" type="number" value="415" step="any" min="0.001" required></label>
+          <label>Current (A)<input name="i" type="number" value="100" step="any" min="0" required></label>
+          <label>One-way length (km)<input name="length" type="number" value="0.1" step="any" min="0" required></label>
+          <label>AC resistance (Ω/km)<input name="r" type="number" value="0.325" step="any" min="0" required></label>
+          <label>Reactance (Ω/km)<input name="x" type="number" value="0.08" step="any" min="0" required></label>
+          <label>Power factor (negative for leading)<input name="pf" type="number" value="0.9" step="any" min="-1" max="1" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary><p>Approximate longitudinal drop √3 × I × L × (R cosφ + X sinφ). Positive power factor input denotes lagging load. Negative denotes leading with the same active power factor magnitude. Negative drop denotes voltage rise.</p><p><a href="https://eepowerschool.com/tools/cable-sizing-calculator/">Technical reference</a></p></details>
     </section>
   </main>
   <footer class="wrap"><a href="../">Back to Power System Tools</a></footer>

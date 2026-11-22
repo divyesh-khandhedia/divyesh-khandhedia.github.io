@@ -1,6 +1,7 @@
 import {
   perUnit, toRectangular, toPolar, sequenceToPhase, phaseToSequence, faultCurrent,
   twoBus, frequencyResponse, inverseTime, transformerImpedance, cableResistance, meritOrder,
+  additionalCalculations,
 } from "./calculations.js";
 
 const decimal = new Intl.NumberFormat("en", { maximumSignificantDigits: 6 });
@@ -248,7 +249,8 @@ function numbers(n, ...names) {
 }
 
 for (const form of document.querySelectorAll("[data-calculator]")) {
-  const calculate = calculators[form.dataset.calculator];
+  const key = form.dataset.calculator;
+  const calculate = calculators[key] ?? ((_, n) => [metrics(additionalCalculations[key](n))]);
   const result = form.nextElementSibling;
   function update() {
     const values = new FormData(form);

@@ -45,6 +45,12 @@
         <li><a href="./calculators/#transformer"><strong>Transformer impedance</strong><span>R, X and X/R from nameplate data</span></a></li>
         <li><a href="./calculators/#cable"><strong>Cable DC resistance</strong><span>Conductor temperature correction</span></a></li>
         <li><a href="./calculators/#dispatch"><strong>Merit-order dispatch</strong><span>Generation allocation and energy cost</span></a></li>
+        <li><a href="./calculators/#pll"><strong>SRF-PLL tuning</strong><span>Estimate gains for a normalized synchronous-reference-frame PLL.</span></a></li>
+        <li><a href="./calculators/#ground"><strong>Grounding conductor thermal sizing</strong><span>Estimate conductor area for a short-duration fault.</span></a></li>
+        <li><a href="./calculators/#tx-loss"><strong>Transformer losses and efficiency</strong><span>Estimate losses at a given loading and power factor.</span></a></li>
+        <li><a href="./calculators/#three-phase"><strong>Generator electrical conversions</strong><span>Convert balanced three-phase current, kVA, kW and kVAr from a kW rating.</span></a></li>
+        <li><a href="./calculators/#scada"><strong>SCADA analog scaling</strong><span>Convert raw counts or analog signals to engineering units.</span></a></li>
+        <li><a href="./calculators/#volt-drop"><strong>Cable voltage drop</strong><span>Estimate balanced three-phase voltage drop from cable resistance and reactance.</span></a></li>
       </ul>
     </section>
 
@@ -138,9 +144,9 @@
             <small>Built-in · <a href="https://eepowerschool.com/tools/inertia-rocof-calculator/">EE Power School reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="GFL inverter converter phase locked loop weak grid bode">
-            <h4><a href="https://eepowerschool.com/tools/pll-tuner/">SRF-PLL Tuning<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Estimate PI gains from loop bandwidth and damping, then inspect the modeled step and frequency response.</p>
-            <small>EE Power School</small>
+            <h4><a href="./calculators/#pll">SRF-PLL tuning</a></h4>
+            <p>Estimate gains for a normalized synchronous-reference-frame PLL.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/pll-tuner/">Provider reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="SMIB generator out of step impedance trajectory">
             <h4><a href="https://gridcircuits.com/power-swing-calculator/">Power Swing and Rotor Angle<span aria-hidden="true"> ↗</span></a></h4>
@@ -203,9 +209,9 @@
             <small>ELEK Software</small>
           </li>
           <li class="directory-card" data-keywords="earthing ground conductor tape fault duration I²t">
-            <h4><a href="https://gridcircuits.com/grounding-conductor-sizing-calculator/">Grounding Conductor Sizing<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Check grounding conductor cross-section for a short-duration fault using an adiabatic model.</p>
-            <small>GridCircuits · Thermal screening</small>
+            <h4><a href="./calculators/#ground">Grounding conductor thermal sizing</a></h4>
+            <p>Estimate conductor area for a short-duration fault.</p>
+            <small>Built-in · <a href="https://gridcircuits.com/grounding-conductor-sizing-calculator/">Provider reference ↗</a></small>
           </li>
         </ul>
       </section>
@@ -217,6 +223,9 @@
             <p>Check cable ampacity derating, steady-state voltage drop and short-circuit thermal withstand.</p>
             <small>EE Power School</small>
           </li>
+          <li class="directory-card" data-keywords="voltage drop cable power factor"><h4><a href="./calculators/#volt-drop">Cable voltage drop</a></h4>
+            <p>Estimate balanced three-phase voltage drop from cable resistance and reactance.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/cable-sizing-calculator/">Provider reference ↗</a></small></li>
           <li class="directory-card" data-keywords="copper aluminium aluminum XLPE temperature DC ohm resistance">
             <h4><a href="./calculators/#cable">Cable DC Resistance at Temperature</a></h4>
             <p>Correct a 20 °C manufacturer value to your specified conductor temperature.</p>
@@ -243,9 +252,9 @@
             <small>EE Power School</small>
           </li>
           <li class="directory-card" data-keywords="no load copper iron core kW kVAr efficiency">
-            <h4><a href="https://stardeltapower.co.uk/tools/transformer-losses/">Transformer Losses<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Estimate active and reactive losses from transformer data and operating load.</p>
-            <small>Star Delta Power</small>
+            <h4><a href="./calculators/#tx-loss">Transformer losses and efficiency</a></h4>
+            <p>Estimate losses at a given loading and power factor.</p>
+            <small>Built-in · <a href="https://stardeltapower.co.uk/tools/transformer-losses/">Provider reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="transformer impedance load losses short circuit">
             <h4><a href="./calculators/#transformer">Transformer X/R</a></h4>
@@ -263,9 +272,9 @@
             <small>Built-in · <a href="https://eepowerschool.com/tools/per-unit-calculator/">EE Power School reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="power factor generator sizing power current HP">
-            <h4><a href="https://generatorsource.com/tools-info/power-calculators/">Generator Electrical Conversions<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Convert between kW, kVA, amperes and horsepower for preliminary generator load estimates.</p>
-            <small>Generator Source</small>
+            <h4><a href="./calculators/#three-phase">Generator electrical conversions</a></h4>
+            <p>Convert balanced three-phase current, kVA, kW and kVAr from a kW rating.</p>
+            <small>Built-in · <a href="https://generatorsource.com/tools-info/power-calculators/">Provider reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="FLA FLC HP motor nameplate">
             <h4><a href="https://shailearning.com/how-to-calculate-motor-fla-inrush-and-protection/">Motor Full-Load Current<span aria-hidden="true"> ↗</span></a></h4>
@@ -308,9 +317,9 @@
             <small>Adjie Brotools</small>
           </li>
           <li class="directory-card" data-keywords="SCADA 4-20 mA PLC RTU calibration">
-            <h4><a href="https://gridcircuits.com/analog-scaling-calculator/">SCADA Analog Scaling<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Convert between raw input counts or signal values and engineering units.</p>
-            <small>GridCircuits</small>
+            <h4><a href="./calculators/#scada">SCADA analog scaling</a></h4>
+            <p>Convert raw counts or analog signals to engineering units.</p>
+            <small>Built-in · <a href="https://gridcircuits.com/analog-scaling-calculator/">Provider reference ↗</a></small>
           </li>
         </ul>
       </section>
