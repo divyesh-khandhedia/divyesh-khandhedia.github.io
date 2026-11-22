@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browser calculators for power-system studies, protection, equipment and dispatch.">
+  <title>Built-in Engineering Calculators | Power System Tools</title>
+  <link rel="stylesheet" href="../tools.css">
+  <link rel="stylesheet" href="./calculators.css">
+  <script type="module" src="./interface.js"></script>
+</head>
+<body>
+  <header class="masthead"><div class="wrap">
+    <a class="brand" href="../">← Power System Tools</a>
+    <nav aria-label="Toolbox"><a href="../#built-in">All built-in tools</a><a href="../#directory">Tool directory</a></nav>
+  </div></header>
+  <main class="wrap">
+    <header class="intro"><h1>Engineering Calculators</h1>
+      <p>Run the calculations in your browser. Inputs stay on this page.</p>
+      <noscript><p>Enable JavaScript to run the calculators.</p></noscript>
+    </header>
+    <nav class="calculator-nav" aria-label="Jump to a calculator">
+      <ul><li><a href="#per-unit">Per-unit conversion</a></li><li><a href="#symmetrical">Symmetrical components</a></li><li><a href="#fault">Sequence-network fault current</a></li><li><a href="#voltage">Two-bus PV curve</a></li><li><a href="#frequency">Frequency nadir and RoCoF</a></li><li><a href="#idmt">IEC IDMT relay timing</a></li><li><a href="#transformer">Transformer impedance split</a></li><li><a href="#cable">Cable DC resistance at temperature</a></li><li><a href="#dispatch">Merit-order dispatch</a></li></ul>
+    </nav>
+    <section id="per-unit" class="tool">
+      <header><h2>Per-unit conversion</h2><p>Change the voltage and MVA base of a three-phase impedance.</p></header>
+      <form data-calculator="per-unit">
+
+        <div class="fields">
+          <label>Original base (MVA)<input name="oldMva" type="number" value="200" min="0.001" step="any" required></label>
+          <label>Original base (kV L-L)<input name="oldKv" type="number" value="115" min="0.001" step="any" required></label>
+          <label>New base (MVA)<input name="mva" type="number" value="100" min="0.001" step="any" required></label>
+          <label>New base (kV L-L)<input name="kv" type="number" value="115" min="0.001" step="any" required></label>
+          <label>Original R (pu)<input name="r" type="number" value="0.02" step="any" required></label>
+          <label>Original X (pu)<input name="x" type="number" value="0.2" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Zbase = kV²/MVA. Multiply each original pu impedance component by (MVAnew/MVAold) × (kVold/kVnew)². Select line-to-line voltage on the same physical side of the equipment.</p>
+      </details>
+    </section>
+    <section id="symmetrical" class="tool">
+      <header><h2>Symmetrical components</h2><p>Convert between phase and sequence phasors.</p></header>
+      <form data-calculator="symmetrical">
+        <p class="hint">Enter A, B, C for phase inputs or 0, 1, 2 for sequence inputs, in that order.</p>
+        <div class="fields">
+          <label>Conversion<select name="direction"><option value="phase">Phase → sequence</option><option value="sequence">Sequence → phase</option></select></label>
+          <label>Input 1 magnitude<input name="m0" type="number" value="1" min="0" max="1000000000.0" step="any" required></label>
+          <label>Input 1 angle (°)<input name="a0" type="number" value="0" min="-360" max="360" step="any" required></label>
+          <label>Input 2 magnitude<input name="m1" type="number" value="0.9" min="0" max="1000000000.0" step="any" required></label>
+          <label>Input 2 angle (°)<input name="a1" type="number" value="-120" min="-360" max="360" step="any" required></label>
+          <label>Input 3 magnitude<input name="m2" type="number" value="1.05" min="0" max="1000000000.0" step="any" required></label>
+          <label>Input 3 angle (°)<input name="a2" type="number" value="120" min="-360" max="360" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Uses the Fortescue transform with ABC rotation and a = 1∠120°. All magnitudes use the same unit. Unbalance is 100 × |X₂|/|X₁| and is undefined when positive sequence is zero.</p>
+      </details>
+    </section>
+    <section id="fault" class="tool">
+      <header><h2>Sequence-network fault current</h2><p>Calculate initial symmetrical RMS currents from a single-bus Thevenin equivalent.</p></header>
+      <form data-calculator="fault">
+
+        <div class="fields">
+          <label>Fault type<select name="fault"><option value="three">Three-phase</option><option value="slg">A-to-ground</option><option value="ll">B-to-C</option><option value="llg">B and C to ground</option></select></label>
+          <label>Bus voltage base (kV L-L)<input name="kv" type="number" value="115" min="0.001" step="any" required></label>
+          <label>System base (MVA)<input name="mva" type="number" value="100" min="0.001" step="any" required></label>
+          <label>Prefault voltage (pu)<input name="prefault" type="number" value="1" min="0.01" max="2" step="any" required></label>
+          <label>Positive sequence R (pu)<input name="r1" type="number" value="0.01" min="0" max="1000" step="any" required></label>
+          <label>Positive sequence X (pu)<input name="x1" type="number" value="0.2" max="1000" step="any" required></label>
+          <label>Negative sequence R (pu)<input name="r2" type="number" value="0.01" min="0" max="1000" step="any" required></label>
+          <label>Negative sequence X (pu)<input name="x2" type="number" value="0.2" max="1000" step="any" required></label>
+          <label>Zero sequence R (pu)<input name="r0" type="number" value="0.03" min="0" max="1000" step="any" required></label>
+          <label>Zero sequence X (pu)<input name="x0" type="number" value="0.5" max="1000" step="any" required></label>
+          <label>Fault path R (pu)<input name="rf" type="number" value="0" min="0" max="1000" step="any" required></label>
+          <label>Fault path X (pu)<input name="xf" type="number" value="0" max="1000" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Uses standard series and parallel sequence-network connections. Fault impedance is per phase for a balanced fault, between phases for B–C, or the common ground path for faults to ground. Use positive, negative and zero sequence impedances on the same base. Results exclude DC offset and equipment duty checks.</p>
+      </details>
+    </section>
+    <section id="voltage" class="tool">
+      <header><h2>Two-bus PV curve</h2><p>Find the constant-power-factor loadability limit and plot both voltage solutions.</p></header>
+      <form data-calculator="voltage">
+
+        <div class="fields">
+          <label>Source voltage (pu)<input name="source" type="number" value="1" min="0.01" max="2" step="any" required></label>
+          <label>Series R (pu)<input name="r" type="number" value="0.02" min="0" max="10" step="any" required></label>
+          <label>Series X (pu)<input name="x" type="number" value="0.25" min="0" max="10" step="any" required></label>
+          <label>Receiving load P (pu)<input name="p" type="number" value="0.9" min="0" max="100" step="any" required></label>
+          <label>Load Q/P (lagging positive)<input name="qOverP" type="number" value="0.33" min="-10" max="10" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Models a fixed source and lumped series impedance feeding a constant-PQ load. At each P, Q = P × Q/P. The quadratic in |V|² has two roots up to the nose point. Generator reactive limits, shunts and controls are outside this model.</p>
+      </details>
+    </section>
+    <section id="frequency" class="tool">
+      <header><h2>Frequency nadir and RoCoF</h2><p>Simulate aggregate primary frequency response after a generation loss.</p></header>
+      <form data-calculator="frequency">
+
+        <div class="fields">
+          <label>System base (MVA)<input name="base" type="number" value="1000" min="1" max="10000000.0" step="any" required></label>
+          <label>Nominal frequency (Hz)<input name="nominal" type="number" value="50" min="20" max="100" step="any" required></label>
+          <label>Equivalent inertia H (s)<input name="inertia" type="number" value="4" min="0.1" max="30" step="any" required></label>
+          <label>Generation loss (MW)<input name="loss" type="number" value="100" min="0" max="10000000.0" step="any" required></label>
+          <label>Load damping D (pu/pu)<input name="damping" type="number" value="1" min="0" max="10" step="any" required></label>
+          <label>Aggregate droop (%)<input name="droop" type="number" value="5" min="0.5" max="20" step="any" required></label>
+          <label>Governor lag (s)<input name="governorTime" type="number" value="0.5" min="0.02" max="30" step="any" required></label>
+          <label>Simulated duration (s)<input name="duration" type="number" value="15" min="0.1" max="120" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Integrates 2H × dΔf/dt = ΔPm − ΔP − DΔf and Tg × dΔPm/dt = −Δf/R − ΔPm in per unit on the system base. This single-area screening model assumes unsaturated primary response, with no deadband, reserve limit, secondary control or UFLS.</p>
+      </details>
+    </section>
+    <section id="idmt" class="tool">
+      <header><h2>IEC IDMT relay timing</h2><p>Compare two inverse-time curves at the same primary fault current.</p></header>
+      <form data-calculator="idmt">
+
+        <div class="fields">
+          <label>Primary fault current (A)<input name="current" type="number" value="1500" min="0" max="10000000.0" step="any" required></label>
+          <label>Downstream curve<select name="downCurve"><option value="standard">Standard inverse</option><option value="very">Very inverse</option><option value="extreme">Extremely inverse</option></select></label>
+          <label>Downstream pickup (A)<input name="downPickup" type="number" value="300" min="0.01" step="any" required></label>
+          <label>Downstream time multiplier<input name="downTms" type="number" value="0.1" min="0.001" step="any" required></label>
+          <label>Upstream curve<select name="upCurve"><option value="standard">Standard inverse</option><option value="very">Very inverse</option><option value="extreme">Extremely inverse</option></select></label>
+          <label>Upstream pickup (A)<input name="upPickup" type="number" value="500" min="0.01" step="any" required></label>
+          <label>Upstream time multiplier<input name="upTms" type="number" value="0.2" min="0.001" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>IEC inverse-time equation t = TMS × k / [(I/Iₛ)^α − 1]. The reported margin is upstream minus downstream operate time at this one current. Breaker clearing time, relay tolerances, instantaneous elements and coordination across fault cases are separate checks.</p>
+      </details>
+    </section>
+    <section id="transformer" class="tool">
+      <header><h2>Transformer impedance split</h2><p>Estimate leakage R and X from nameplate impedance and rated-current load losses.</p></header>
+      <form data-calculator="transformer">
+
+        <div class="fields">
+          <label>Transformer rating (kVA)<input name="kva" type="number" value="40000" min="0.001" step="any" required></label>
+          <label>Reference winding (kV L-L)<input name="kv" type="number" value="115" min="0.001" step="any" required></label>
+          <label>Nameplate Z (%)<input name="impedance" type="number" value="10" min="0.0001" max="100" step="any" required></label>
+          <label>Rated load loss (kW)<input name="copperLoss" type="number" value="160" min="0" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>R% = 100 × load loss in kW / rated kVA and X% = √(Z%² − R%²). Use the rated-current load loss at the test reference temperature, excluding no-load loss. Ohms are referred to the selected winding.</p>
+      </details>
+    </section>
+    <section id="cable" class="tool">
+      <header><h2>Cable DC resistance at temperature</h2><p>Correct a manufacturer’s 20 °C resistance to the specified conductor temperature.</p></header>
+      <form data-calculator="cable">
+
+        <div class="fields">
+          <label>Conductor<select name="material"><option value="copper">Copper</option><option value="aluminum">Aluminium</option></select></label>
+          <label>DC resistance at 20 °C (Ω/km)<input name="r20" type="number" value="0.0754" min="1e-06" step="any" required></label>
+          <label>Conductor temperature (°C)<input name="temperature" type="number" value="90" min="-50" max="200" step="any" required></label>
+          <label>One-way length (km)<input name="length" type="number" value="1" min="0" max="10000" step="any" required></label>
+          <label>Identical parallel conductors per phase<input name="parallel" type="number" value="1" min="1" max="1000" step="1" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>R(T)/R(20) = (K + T)/(K + 20), with K = 234.5 °C for copper or 228 °C for aluminium. Temperature is the conductor temperature. The estimate covers DC resistance per phase in one direction. AC skin and proximity effects require separate treatment.</p>
+      </details>
+    </section>
+    <section id="dispatch" class="tool">
+      <header><h2>Merit-order dispatch</h2><p>Allocate generation to meet demand with constant marginal costs and an already committed fleet.</p></header>
+      <form data-calculator="dispatch">
+        <label>Committed units <small>One line each: name, minimum MW, maximum MW, cost per MWh</small><textarea name="units" rows="4" required spellcheck="false">Wind, 0, 60, 5
+Gas A, 50, 140, 45
+Gas B, 30, 120, 65</textarea></label>
+        <div class="fields">
+          <label>Demand (MW)<input name="demand" type="number" value="240" min="0" max="10000000.0" step="any" required></label>
+        </div>
+        <button type="submit">Calculate</button>
+      </form>
+      <div class="result" aria-live="polite"></div>
+      <details><summary>Method and assumptions</summary>
+        <p>Start at each unit’s minimum output, then allocate remaining MW in ascending marginal-cost order up to each maximum. The objective is energy cost per hour. The model omits network constraints, losses, ramping, reserves and unit commitment.</p>
+      </details>
+    </section>
+  </main>
+  <footer class="wrap"><a href="../">Back to Power System Tools</a></footer>
+</body>
+</html>

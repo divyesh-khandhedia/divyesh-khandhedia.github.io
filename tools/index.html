@@ -27,19 +27,31 @@
     </header>
 
     <section id="built-in" class="built-in" aria-labelledby="built-in-heading">
-      <h2 id="built-in-heading">Built-in tools</h2>
+      <div class="directory-heading">
+        <h2 id="built-in-heading">Built-in tools</h2>
+        <p>Calculate directly on this site. Your inputs stay in your browser.</p>
+      </div>
       <ul class="quick-grid">
         <li><a href="#grid"><strong>SCR grid equivalent</strong><span>Fault level and Thevenin R + jX</span></a></li>
         <li><a href="#modes"><strong>Modal damping</strong><span>Frequency and damping from eigenvalues</span></a></li>
         <li><a href="#storage"><strong>BESS ramp buffer</strong><span>Peak MW and usable MWh</span></a></li>
         <li><a href="./load-flow/"><strong>AC load-flow lab</strong><span>Interactive bus and branch model</span></a></li>
+        <li><a href="./calculators/#per-unit"><strong>Per-unit conversion</strong><span>Impedance and base changes</span></a></li>
+        <li><a href="./calculators/#symmetrical"><strong>Symmetrical components</strong><span>Phase and sequence phasors</span></a></li>
+        <li><a href="./calculators/#fault"><strong>Sequence fault currents</strong><span>Three-phase and unbalanced faults</span></a></li>
+        <li><a href="./calculators/#voltage"><strong>Two-bus PV curve</strong><span>Voltage solutions and load margin</span></a></li>
+        <li><a href="./calculators/#frequency"><strong>Frequency nadir &amp; RoCoF</strong><span>Aggregate primary response</span></a></li>
+        <li><a href="./calculators/#idmt"><strong>IEC IDMT timing</strong><span>Operate times and relay grading margin</span></a></li>
+        <li><a href="./calculators/#transformer"><strong>Transformer impedance</strong><span>R, X and X/R from nameplate data</span></a></li>
+        <li><a href="./calculators/#cable"><strong>Cable DC resistance</strong><span>Conductor temperature correction</span></a></li>
+        <li><a href="./calculators/#dispatch"><strong>Merit-order dispatch</strong><span>Generation allocation and energy cost</span></a></li>
       </ul>
     </section>
 
     <section id="directory" aria-labelledby="directory-heading">
       <div class="directory-heading">
         <h2 id="directory-heading">Tool directory</h2>
-        <p>Each link opens the provider’s tool, demo or documentation.</p>
+        <p>Open a built-in calculator or browse tools and references from other providers.</p>
       </div>
       <div class="directory-controls" hidden>
         <label for="directory-query">Search tools</label>
@@ -86,9 +98,9 @@
             <small>LF Energy · Platform · <a href="https://github.com/divyesh-khandhedia/gridstudy-app">GitHub fork</a></small>
           </li>
           <li class="directory-card" data-keywords="PV QV nose curve voltage collapse P-V Q-V">
-            <h4><a href="https://eepowerschool.com/tools/two-bus-load-flow/">PV and QV Curves<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Trace two-bus voltage-stability curves and inspect loadability and reactive margin.</p>
-            <small>EE Power School</small>
+            <h4><a href="./calculators/#voltage">Two-Bus PV Curve</a></h4>
+            <p>Trace both voltage branches and calculate load margin at constant power factor.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/two-bus-load-flow/">EE Power School PV and QV tool ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="substation breaker switching ring-bus">
             <h4><a href="https://gridcircuits.com/ring-bus-load-flow-calculator/">Transmission Ring-Bus Study<span aria-hidden="true"> ↗</span></a></h4>
@@ -121,9 +133,9 @@
             <small>Falstad · Educational</small>
           </li>
           <li class="directory-card" data-keywords="frequency stability swing equation UFLS droop">
-            <h4><a href="https://eepowerschool.com/tools/inertia-rocof-calculator/">Inertia, RoCoF and Frequency Nadir<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Estimate the frequency trajectory after an infeed loss using system inertia and aggregate governor response.</p>
-            <small>EE Power School</small>
+            <h4><a href="./calculators/#frequency">Inertia, RoCoF and Frequency Nadir</a></h4>
+            <p>Estimate the frequency trajectory after a generation loss with an aggregate governor model.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/inertia-rocof-calculator/">EE Power School reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="GFL inverter converter phase locked loop weak grid bode">
             <h4><a href="https://eepowerschool.com/tools/pll-tuner/">SRF-PLL Tuning<span aria-hidden="true"> ↗</span></a></h4>
@@ -156,9 +168,9 @@
             <small>Schneider Electric</small>
           </li>
           <li class="directory-card" data-keywords="Fortescue phase angle VUF positive negative zero">
-            <h4><a href="https://eepowerschool.com/tools/symmetrical-components/">Symmetrical Components Calculator<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Resolve phase quantities into sequence components and examine voltage unbalance with interactive phasors.</p>
-            <small>EE Power School</small>
+            <h4><a href="./calculators/#symmetrical">Symmetrical Components Calculator</a></h4>
+            <p>Convert phase and sequence phasors using the ABC convention.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/symmetrical-components/">EE Power School phasor demo ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="relay oscillography CFG DAT waveform IEEE C37.111">
             <h4><a href="https://sagswell.com/comtrade-viewer">COMTRADE Viewer<span aria-hidden="true"> ↗</span></a></h4>
@@ -166,9 +178,9 @@
             <small>SagSwell</small>
           </li>
           <li class="directory-card" data-keywords="unbalanced faults SLG LL LLG grounding positive negative zero sequence">
-            <h4><a href="https://eepowerschool.com/tools/fault-current-calculator/">Sequence-Network Fault Calculator<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Compare three-phase, line-to-ground, line-to-line and double-line-to-ground faults using sequence impedances.</p>
-            <small>EE Power School</small>
+            <h4><a href="./calculators/#fault">Sequence-Network Fault Calculator</a></h4>
+            <p>Compare three-phase and unbalanced faults using sequence impedances.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/fault-current-calculator/">EE Power School reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="asymmetrical fault peak current DC offset">
             <h4><a href="https://stardeltapower.co.uk/tools/fault-waveform/">AC Fault Waveforms<span aria-hidden="true"> ↗</span></a></h4>
@@ -176,9 +188,9 @@
             <small>Star Delta Power</small>
           </li>
           <li class="directory-card" data-keywords="relay coordination IEC 60255 TCC trip time">
-            <h4><a href="https://stardeltapower.co.uk/tools/idmt-curve-grading/">IDMT Curve Grading<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Compare upstream and downstream inverse-time curves and inspect grading margins.</p>
-            <small>Star Delta Power</small>
+            <h4><a href="./calculators/#idmt">IEC IDMT Relay Timing</a></h4>
+            <p>Compare upstream and downstream operate times at a specified fault current.</p>
+            <small>Built-in · <a href="https://stardeltapower.co.uk/tools/idmt-curve-grading/">Star Delta Power curve grading ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="secondary injection commissioning relay tolerance">
             <h4><a href="https://stardeltapower.co.uk/tools/idmt-test-comparison/">IDMT Test Comparison<span aria-hidden="true"> ↗</span></a></h4>
@@ -204,6 +216,11 @@
             <h4><a href="https://eepowerschool.com/tools/cable-sizing-calculator/">Cable Sizing<span aria-hidden="true"> ↗</span></a></h4>
             <p>Check cable ampacity derating, steady-state voltage drop and short-circuit thermal withstand.</p>
             <small>EE Power School</small>
+          </li>
+          <li class="directory-card" data-keywords="copper aluminium aluminum XLPE temperature DC ohm resistance">
+            <h4><a href="./calculators/#cable">Cable DC Resistance at Temperature</a></h4>
+            <p>Correct a 20 °C manufacturer value to your specified conductor temperature.</p>
+            <small>Built-in</small>
           </li>
           <li class="directory-card" data-keywords="cable installation duct jamming pulling force">
             <h4><a href="https://elek.com/calculators/cable-pulling/">Cable Pulling Tension<span aria-hidden="true"> ↗</span></a></h4>
@@ -231,9 +248,9 @@
             <small>Star Delta Power</small>
           </li>
           <li class="directory-card" data-keywords="transformer impedance load losses short circuit">
-            <h4><a href="https://stardeltapower.co.uk/tools/transformer-xr/">Transformer X/R<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Estimate the resistance and reactance split using transformer nameplate data.</p>
-            <small>Star Delta Power</small>
+            <h4><a href="./calculators/#transformer">Transformer X/R</a></h4>
+            <p>Calculate transformer resistance and reactance from rated load losses and impedance.</p>
+            <small>Built-in · <a href="https://stardeltapower.co.uk/tools/transformer-xr/">Star Delta Power reference ↗</a></small>
           </li>
         </ul>
       </section>
@@ -241,9 +258,9 @@
         <h3 id="category-fundamentals">Electrical calculations</h3>
         <ul class="directory-grid">
           <li class="directory-card" data-keywords="Z base kV MVA pu power system">
-            <h4><a href="https://eepowerschool.com/tools/per-unit-calculator/">Per-Unit and Base Conversion<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Convert ohms, percent and per unit, change MVA or voltage base, and carry voltage bases through transformer zones.</p>
-            <small>EE Power School</small>
+            <h4><a href="./calculators/#per-unit">Per-Unit and Base Conversion</a></h4>
+            <p>Convert impedance to a new MVA and voltage base and inspect the corresponding ohms.</p>
+            <small>Built-in · <a href="https://eepowerschool.com/tools/per-unit-calculator/">EE Power School reference ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="power factor generator sizing power current HP">
             <h4><a href="https://generatorsource.com/tools-info/power-calculators/">Generator Electrical Conversions<span aria-hidden="true"> ↗</span></a></h4>
@@ -304,6 +321,11 @@
             <h4><a href="https://tool.adjiebrotots.com/ed-uc-simulator/">ED/UC Simulator<span aria-hidden="true"> ↗</span></a></h4>
             <p>Explore dispatch, unit commitment and nodal prices on a bus network.</p>
             <small>Adjie Brotools</small>
+          </li>
+          <li class="directory-card" data-keywords="generation economic dispatch unit minimum maximum marginal cost">
+            <h4><a href="./calculators/#dispatch">Merit-Order Dispatch Calculator</a></h4>
+            <p>Allocate MW by linear marginal cost for a pre-committed fleet without network constraints.</p>
+            <small>Built-in</small>
           </li>
           <li class="directory-card" data-keywords="generation planning gas wind solar battery least cost">
             <h4><a href="https://tool.adjiebrotots.com/capacity-expansion-planner/">Capacity Expansion Planner<span aria-hidden="true"> ↗</span></a></h4>

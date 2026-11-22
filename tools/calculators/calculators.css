@@ -1,0 +1,33 @@
+.calculator-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: .5rem;
+  margin: 0 0 .8rem;
+  padding: 0;
+}
+.calculator-nav a {
+  background: #e7f0eb;
+  border: 1px solid var(--border);
+  border-radius: 100vw;
+  display: block;
+  padding: .32rem .75rem;
+}
+.fields select {
+  background: #f9fcfa;
+  color: inherit;
+  border: 1px solid #879e95;
+  border-radius: .45rem;
+  display: block;
+  font: inherit;
+  margin-top: .35rem;
+  min-width: 0;
+  padding: .55rem .65rem;
+  width: 100%;
+}
+.result > :not(:first-child), textarea + .fields, form > label + .fields { margin-top: .9rem; }
+.result caption { text-align: left; font-weight: 650; padding: .2rem 0 .4rem; }
+.calculator-chart { border: 1px solid var(--border); border-radius: .55rem; padding: .55rem; margin: 0; }
+.calculator-chart canvas { display: block; width: 100%; height: 225px; }
+.calculator-chart figcaption { display: flex; flex-wrap: wrap; gap: .55rem 1rem; padding: .25rem .45rem; font-size: .85rem; }
+.calculator-chart figcaption span { border-left: .25rem solid; padding-left: .4rem; }
