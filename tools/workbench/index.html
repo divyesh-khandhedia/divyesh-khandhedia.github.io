@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Power System Workbench</title><link rel="stylesheet" href="../tools.css"><style>
+label+label{margin-top:.65rem} .fields label+label{margin-top:0} canvas{width:100%;height:230px} pre{white-space:pre-wrap;overflow-wrap:anywhere} .result>*+*{margin-top:.65rem}
+</style><script type="module" src="./workbench.js"></script></head><body>
+<header class="masthead"><div class="wrap"><a class="brand" href="../">← Power System Tools</a><nav aria-label="Workbench"><a href="#qv">QV</a><a href="#pull">Cable pulling</a><a href="#comtrade">COMTRADE</a><a href="#commitment">Unit commitment</a><a href="#powerfactory">PowerFactory</a><a href="#pscad">PSCAD</a></nav></div></header>
+<main class="wrap"><header class="intro"><h1>Power System Workbench</h1><p>Run studies, inspect records and generate simulator scripts in your browser.</p></header>
+<section class="tool" id="qv"><h2>Two-bus QV curve</h2><p>Sweep receiving-bus voltage at constant active load. Positive Q is load absorption.</p>
+<form><div class="fields">
+<label>Source voltage (pu)<input name="source" type="number" min=".01" step="any" value="1" required></label>
+<label>R (pu)<input name="r" type="number" min="0" step="any" value=".02" required></label>
+<label>X (pu)<input name="x" type="number" min="0" step="any" value=".25" required></label>
+<label>Active load P (pu)<input name="p" type="number" min="0" step="any" value=".9" required></label>
+<label>Minimum voltage (pu)<input name="low" type="number" min=".01" step="any" value=".2" required></label>
+<label>Maximum voltage (pu)<input name="high" type="number" min=".01" step="any" value="1.2" required></label>
+</div><button>Plot QV curve</button></form><div class="result" aria-live="polite"></div>
+<details><summary>Assumptions</summary><p>Fixed source behind R + jX. The plot follows the larger reactive-load solution of the receiving-bus power equation. The peak is estimated from the selected voltage sweep. Generator limits and controls are outside this model.</p></details></section>
+
+<section class="tool" id="pull"><h2>Cable pulling tension</h2><p>Estimate tension and sidewall pressure for a single cable on a level route.</p>
+<form><div class="fields">
+<label>Cable weight (N/m)<input name="weight" type="number" min="0" step="any" value="48" required></label>
+<label>Incoming tension (N)<input name="initial" type="number" min="0" step="any" value="0" required></label>
+<label>Friction coefficient<input name="friction" type="number" min="0" step="any" value=".35" required></label>
+</div><label>Route segments <small>Use straight,length in metres or bend,angle in degrees,radius in metres</small><textarea name="route" rows="4" required>straight,40
+bend,90,1.2
+straight,25</textarea></label><button>Calculate pull</button></form><div class="result" aria-live="polite"></div>
+<details><summary>Assumptions</summary><p>Straights add μwL. Bends use the capstan equation and estimate peak sidewall pressure as exit tension divided by bend radius. Compare with cable manufacturer limits for your installation.</p></details></section>
+
+<section class="tool" id="comtrade"><h2>COMTRADE viewer</h2><p>Open paired CFG and DAT files. Data stays in your browser.</p>
+<form><div class="fields"><label>Configuration (.cfg)<input name="cfg" type="file" accept=".cfg" required></label><label>Data (.dat)<input name="dat" type="file" accept=".dat" required></label></div><button>Open recording</button></form>
+<div class="result" aria-live="polite"></div><details><summary>Supported records</summary><p>ASCII, BINARY, BINARY32 and FLOAT32 DAT formats with paired CFG. View one analog or digital channel at a time. DAT limit is 12 MiB. Analog values follow the CFG scale and offset without primary/secondary conversion.</p></details></section>
+
+<section class="tool" id="commitment"><h2>Hourly unit commitment</h2><p>Minimize dispatch, no-load and startup costs for up to seven generators and 48 hours.</p>
+<form><label>Generators <small>One per line: name, minimum MW, maximum MW, cost/MWh, no-load cost/hour, startup cost</small><textarea name="units" rows="4" required>Gas A,30,100,36,120,500
+Gas B,20,80,51,70,180
+Peaker,0,55,95,20,90</textarea></label>
+<label>Hourly demand (MW) <small>Separate values by commas, spaces or lines</small><textarea name="demand" rows="2" required>55, 100, 150, 120, 65</textarea></label><button>Optimize schedule</button></form><div class="result" aria-live="polite"></div>
+<details><summary>Assumptions</summary><p>All units start offline. Includes one-hour dispatch intervals, minimum and maximum output, and fixed startup costs. Omits network flows, reserves, ramping, and minimum on/off times. An online unit at zero MW is marked “On”.</p></details></section>
+
+<section class="tool" id="powerfactory"><h2>PowerFactory Python builder</h2><p>Generate a load-flow script that prints terminal voltage magnitudes in per unit.</p>
+<form><div class="fields"><label>Project name<input name="project" value="Demo Grid" required></label><label>Study case (optional)<input name="case" placeholder="Uses the active case when blank"></label></div><button>Generate script</button></form><div class="result" aria-live="polite"></div>
+<details><summary>Local requirements</summary><p>Run with the matching PowerFactory Python API and a licensed installation. The builder generates source code in your browser.</p></details></section>
+
+<section class="tool" id="pscad"><h2>PSCAD Python builder</h2><p>Generate a PSCAD V5 script to launch PSCAD, load a workspace or case, and run a project.</p>
+<form><div class="fields"><label>Workspace or case path<input name="file" value="C:\Studies\Demo.pswx" pattern=".*\.[pP][sS][wWcC][xX]" required></label><label>Project name (without extension)<input name="name" value="Demo" required></label></div><button>Generate script</button></form><div class="result" aria-live="polite"></div>
+<details><summary>Local requirements</summary><p>Run on Windows with licensed PSCAD V5 and the installed mhi.pscad Automation Library. The script runs one project. Simulation sets and PMR are outside this template.</p></details></section>
+</main><footer class="wrap"><a href="../">Back to Power System Tools</a></footer></body></html>

@@ -51,6 +51,12 @@
         <li><a href="./calculators/#three-phase"><strong>Generator electrical conversions</strong><span>Convert balanced three-phase current, kVA, kW and kVAr from a kW rating.</span></a></li>
         <li><a href="./calculators/#scada"><strong>SCADA analog scaling</strong><span>Convert raw counts or analog signals to engineering units.</span></a></li>
         <li><a href="./calculators/#volt-drop"><strong>Cable voltage drop</strong><span>Estimate balanced three-phase voltage drop from cable resistance and reactance.</span></a></li>
+        <li><a href="./workbench/#qv"><strong>Two-bus QV curve</strong><span>Sweep bus voltage at constant active load.</span></a></li>
+        <li><a href="./workbench/#pull"><strong>Cable Pulling Tension</strong><span>Estimate exit tension and bend sidewall pressure.</span></a></li>
+        <li><a href="./workbench/#comtrade"><strong>COMTRADE Viewer</strong><span>Plot analog or digital channels from paired CFG and DAT files.</span></a></li>
+        <li><a href="./workbench/#commitment"><strong>Hourly Unit Commitment</strong><span>Optimize commitment and dispatch for a small generator fleet.</span></a></li>
+        <li><a href="./workbench/#powerfactory"><strong>PowerFactory Python Builder</strong><span>Generate a Python load-flow script for your local simulator.</span></a></li>
+        <li><a href="./workbench/#pscad"><strong>PSCAD Python Builder</strong><span>Generate a Python project-run script for PSCAD V5.</span></a></li>
       </ul>
     </section>
 
@@ -107,6 +113,11 @@
             <h4><a href="./calculators/#voltage">Two-Bus PV Curve</a></h4>
             <p>Trace both voltage branches and calculate load margin at constant power factor.</p>
             <small>Built-in · <a href="https://eepowerschool.com/tools/two-bus-load-flow/">EE Power School PV and QV tool ↗</a></small>
+          </li>
+          <li class="directory-card" data-keywords="voltage stability reactive power QV curve">
+            <h4><a href="./workbench/#qv">Two-bus QV curve</a></h4>
+            <p>Sweep bus voltage at constant active load.</p>
+            <small>Built-in</small>
           </li>
           <li class="directory-card" data-keywords="substation breaker switching ring-bus">
             <h4><a href="https://gridcircuits.com/ring-bus-load-flow-calculator/">Transmission Ring-Bus Study<span aria-hidden="true"> ↗</span></a></h4>
@@ -179,9 +190,9 @@
             <small>Built-in · <a href="https://eepowerschool.com/tools/symmetrical-components/">EE Power School phasor demo ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="relay oscillography CFG DAT waveform IEEE C37.111">
-            <h4><a href="https://sagswell.com/comtrade-viewer">COMTRADE Viewer<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Inspect disturbance waveforms from COMTRADE records in the browser.</p>
-            <small>SagSwell</small>
+            <h4><a href="./workbench/#comtrade">COMTRADE Viewer</a></h4>
+            <p>Plot analog or digital channels from paired CFG and DAT files.</p>
+            <small>Built-in · <a href="https://sagswell.com/comtrade-viewer">Provider tool ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="unbalanced faults SLG LL LLG grounding positive negative zero sequence">
             <h4><a href="./calculators/#fault">Sequence-Network Fault Calculator</a></h4>
@@ -232,9 +243,9 @@
             <small>Built-in</small>
           </li>
           <li class="directory-card" data-keywords="cable installation duct jamming pulling force">
-            <h4><a href="https://elek.com/calculators/cable-pulling/">Cable Pulling Tension<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Estimate pulling tension and conduit bend sidewall pressure along a cable route.</p>
-            <small>ELEK Software</small>
+            <h4><a href="./workbench/#pull">Cable Pulling Tension</a></h4>
+            <p>Estimate exit tension and bend sidewall pressure.</p>
+            <small>Built-in · <a href="https://elek.com/calculators/cable-pulling/">Provider tool ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="bonding cross bonding single point earthing sheath cable">
             <h4><a href="https://stardeltapower.co.uk/tools/induced-sheath-voltage/">Induced Sheath Voltage<span aria-hidden="true"> ↗</span></a></h4>
@@ -287,14 +298,14 @@
         <h3 id="category-automation">Automation &amp; plots</h3>
         <ul class="directory-grid">
           <li class="directory-card" data-keywords="DIgSILENT automation ComLdf">
-            <h4><a href="https://tool.adjiebrotots.com/powerfactory-scripter/">PowerFactory Scripter<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Build DIgSILENT Python scripts for study cases, contingencies and results export.</p>
-            <small>Adjie Brotools · Simulator required to run scripts</small>
+            <h4><a href="./workbench/#powerfactory">PowerFactory Python Builder</a></h4>
+            <p>Generate a Python load-flow script for your local simulator.</p>
+            <small>Built-in · <a href="https://tool.adjiebrotots.com/powerfactory-scripter/">Provider tool ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="PSCAD V5 simulation sets automation">
-            <h4><a href="https://tool.adjiebrotots.com/pscad-scripter/">PSCAD Scripter<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Generate Python automation scripts for PSCAD build, run and EMT checks.</p>
-            <small>Adjie Brotools · Simulator required to run scripts</small>
+            <h4><a href="./workbench/#pscad">PSCAD Python Builder</a></h4>
+            <p>Generate a Python project-run script for PSCAD V5.</p>
+            <small>Built-in · <a href="https://tool.adjiebrotots.com/pscad-scripter/">Provider tool ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="waveforms PSCAD PSS/E charts time series">
             <h4><a href="https://tool.adjiebrotots.com/graphvisualiser/">Graph Visualiser<span aria-hidden="true"> ↗</span></a></h4>
@@ -327,9 +338,9 @@
         <h3 id="category-planning">Planning &amp; renewables</h3>
         <ul class="directory-grid">
           <li class="directory-card" data-keywords="economic dispatch LMP optimization OPF">
-            <h4><a href="https://tool.adjiebrotots.com/ed-uc-simulator/">ED/UC Simulator<span aria-hidden="true"> ↗</span></a></h4>
-            <p>Explore dispatch, unit commitment and nodal prices on a bus network.</p>
-            <small>Adjie Brotools</small>
+            <h4><a href="./workbench/#commitment">Hourly Unit Commitment</a></h4>
+            <p>Optimize commitment and dispatch for a small generator fleet.</p>
+            <small>Built-in · <a href="https://tool.adjiebrotots.com/ed-uc-simulator/">Provider tool ↗</a></small>
           </li>
           <li class="directory-card" data-keywords="generation economic dispatch unit minimum maximum marginal cost">
             <h4><a href="./calculators/#dispatch">Merit-Order Dispatch Calculator</a></h4>
